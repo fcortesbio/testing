@@ -1,0 +1,21 @@
+# PowerShell Profile
+# Function to mimic the Unix 'touch' command
+function touch {
+    param(
+        [Parameter(Mandatory=$true, Position=0, ValueFromPipeline=$true)]
+        [string[]]$Path
+    )
+
+    foreach ($file in $Path) {
+        if (Test-Path -Path $file) {
+            # If file exists, update its last write time to current time
+            (Get-Item -Path $file).LastWriteTime = Get-Date
+            Write-Verbose "Updated timestamp for: $file"
+        } else {
+            # If file doesn't exist, create an empty file
+            $null = New-Item -ItemType File -Path $file -Force
+            Write-Verbose "Created new file: $file"
+        }
+    }
+}
+
