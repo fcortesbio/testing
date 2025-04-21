@@ -1,7 +1,14 @@
+/** 
+🧠 Challenge: FizzBuzz Twist
+Write a program that prints the numbers from 1 to 50. 
+But for multiples of 3, print "Fizz" instead of the number, and for multiples of 5, print "Buzz".
+For numbers which are multiples of both 3 and 5, print "FizzBuzz". 
+Twist: For every number that is a prime, print "Prime" instead of the number (unless it’s already replaced by Fizz, Buzz, or FizzBuzz). 
+*/
+
 /**
  * Checks if a given number is prime.
  * A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
- *
  * @param {number} n The number to check for primality.
  * @returns {boolean} True if the number is prime, false otherwise.
  */
@@ -26,13 +33,17 @@ function isPrime(n) {
  * @returns {string|number} The FizzBuzz/Prime string or the original number.
  */
 function fizzBuzz(i){
-    switch (true){
-        case i % 15 === 0: return "FizzBuzz";
-        case i % 3 === 0: return "Fizz";
-        case i % 5 === 0: return "Buzz";
-        case isPrime(i): return "Prime";
-        default: return i;
-    }
+  if (i % 15 === 0) {
+    return "FizzBuzz";
+  } else if (i % 3 === 0) {
+    return "Fizz";
+  } else if (i % 5 === 0) {
+    return "Buzz";
+  } else if (isPrime(i)) {
+    return "Prime";
+  } else {
+    return i;
+  }
 }
 
 /**
@@ -51,4 +62,4 @@ function main(start, end, steps = 1){
     }
 }
 
-main(1, 30)
+main(1, 50)
