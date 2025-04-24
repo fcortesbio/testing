@@ -19,15 +19,15 @@ Your function should:
  * @param {string} input The string to be scored.
  * @returns {number} The numerical score of the evaluated word.
  */
-function scoreWord(input){
+function scoreWord(input) {
     let score = 0;
     const letters = [..."abcdefghijklmnopqrstuvwxyz"];
 
     [...input.trim().toLowerCase()].forEach(letter => {
-        if (letters.includes(letter)){
+        if (letters.includes(letter)) {
             score += letters.indexOf(letter) + 1;
         }
-        else if (letter === "ñ"){
+        else if (letter === "ñ") {
             score += letters.indexOf("n") + 1;
         }
     })
